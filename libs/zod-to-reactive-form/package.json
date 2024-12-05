@@ -1,6 +1,26 @@
 {
-  "name": "@advidi/zod-to-reactive-form",
+  "name": "@advidi-network/zod-to-reactive-form",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Advidi/zod-to-reactive-form.git"
+  },
+  "keywords": [
+    "zod",
+    "angular",
+    "reactive-forms",
+    "form",
+    "generator",
+    "converted",
+    "schema"
+  ],
+  "description": "Zod to Reactive Form conversion library",
+  "author": "Skoropad Aleksandr <alex@skoropad.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Advidi/zod-to-reactive-form/issues"
+  },
+  "homepage": "https://github.com/Advidi/zod-to-reactive-form#readme",
   "peerDependencies": {
     "@angular/common": ">= 15.0.0",
     "@angular/core": ">= 15.0.0",
