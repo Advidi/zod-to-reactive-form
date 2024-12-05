@@ -22,8 +22,7 @@
   },
   "homepage": "https://github.com/Advidi/zod-to-reactive-form#readme",
   "peerDependencies": {
-    "@angular/common": ">= 15.0.0",
-    "@angular/core": ">= 15.0.0",
+    "@angular/forms": ">= 15.0.0",
     "zod": "^3.0.0"
   },
   "publishConfig": {
