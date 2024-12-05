@@ -24,7 +24,7 @@
   "peerDependencies": {
     "@angular/common": ">= 15.0.0",
     "@angular/core": ">= 15.0.0",
-    "zod": "^3.6.0"
+    "zod": "^3.0.0"
   },
   "publishConfig": {
     "access": "public"
