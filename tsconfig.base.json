@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@zod-to-reactive-form-nx/zod-to-reactive-form": [
+      "@advidi/zod-to-reactive-form": [
         "libs/zod-to-reactive-form/src/index.ts"
       ]
     }

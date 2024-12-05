@@ -6,6 +6,22 @@
   "projectType": "library",
   "tags": [],
   "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/zod-to-reactive-form/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/zod-to-reactive-form/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/zod-to-reactive-form/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "test": {
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],

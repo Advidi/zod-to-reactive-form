@@ -1,0 +1,13 @@
+{
+  "name": "@advidi/zod-to-reactive-form",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": ">= 15.0.0",
+    "@angular/core": ">= 15.0.0",
+    "zod": "^3.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}
