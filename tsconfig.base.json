@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@zod-to-reactive-form-nx/zod-to-reactive-form": [
+        "libs/zod-to-reactive-form/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
