@@ -1,6 +1,7 @@
 import {z} from "zod";
 import {FormControl} from "@angular/forms";
 import {
+  FieldOptions,
   GuardUndefined,
   ZodControl,
   ZodFormArray,
@@ -10,15 +11,15 @@ import {createFormGroup} from "./create-form-group";
 import {createFormArray} from "./create-form-array";
 import {createFormControl} from "./create-form-control";
 
-export function createZodControl<T extends z.SomeZodObject>(schema: T): ZodFormGroup<T>;
-export function createZodControl<T extends z.ZodArray<any>>(schema: T): ZodFormArray<T>;
-export function createZodControl<T extends z.ZodFirstPartySchemaTypes>(schema: T): FormControl<GuardUndefined<z.infer<T>>>;
-export function createZodControl<T extends z.ZodFirstPartySchemaTypes>(schema: T): ZodControl<T> {
+export function createZodControl<T extends z.SomeZodObject>(schema: T, options?: FieldOptions<z.infer<T>>): ZodFormGroup<T>;
+export function createZodControl<T extends z.ZodArray<any>>(schema: T, options?: FieldOptions<z.infer<T>>): ZodFormArray<T>;
+export function createZodControl<T extends z.ZodFirstPartySchemaTypes>(schema: T, options?: FieldOptions<z.infer<T>>): FormControl<GuardUndefined<z.infer<T>>>;
+export function createZodControl<T extends z.ZodFirstPartySchemaTypes>(schema: T, options?: FieldOptions<z.infer<T>>): ZodControl<T> {
   if (schema instanceof z.ZodObject) {
-    return createFormGroup(schema);
+    return createFormGroup(schema, options as any);
   } else if (schema instanceof z.ZodArray) {
-    return createFormArray(schema);
+    return createFormArray(schema, options as any);
   }
 
-  return createFormControl(schema) as ZodControl<T>;
+  return createFormControl(schema, options) as ZodControl<T>;
 }
