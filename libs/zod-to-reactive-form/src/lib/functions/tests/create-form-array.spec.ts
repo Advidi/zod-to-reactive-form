@@ -1,7 +1,7 @@
 import {createFormArray} from '../create-form-array';
 import {z} from 'zod';
 import {FormArray} from '@angular/forms';
-import {createFormControl} from "@advidi/zod-to-reactive-form";
+import {createFormControl} from "../create-form-control";
 
 describe('createFormArray', () => {
   it('should create a FormArray', () => {
