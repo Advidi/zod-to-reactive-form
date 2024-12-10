@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Advidi/zod-to-reactive-form/compare/v1.2.0...v1.2.1) (2024-12-10)
+
+
+### Bug Fixes
+
+* createControl doesn't handle overrides ([#6](https://github.com/Advidi/zod-to-reactive-form/issues/6)) ([ecf1896](https://github.com/Advidi/zod-to-reactive-form/commit/ecf1896709b069ce7d5c904c3e91eaa062ba56db))
+
 # [1.2.0](https://github.com/Advidi/zod-to-reactive-form/compare/v1.1.0...v1.2.0) (2024-12-10)
 
 
