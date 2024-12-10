@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Advidi/zod-to-reactive-form/compare/v1.0.1...v1.1.0) (2024-12-10)
+
+
+### Features
+
+* update an override api ([#2](https://github.com/Advidi/zod-to-reactive-form/issues/2)) ([82ae893](https://github.com/Advidi/zod-to-reactive-form/commit/82ae893250151e74448e72f7562a7c29bece441e))
+
 ## [1.0.1](https://github.com/Advidi/zod-to-reactive-form/compare/v1.0.0...v1.0.1) (2024-12-05)
 
 
