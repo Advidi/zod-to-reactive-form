@@ -1,3 +1,4 @@
+export * from './field-options';
 export * from './unwrap-lazy';
 export * from './zod-control';
 export * from './deep-disabled';
