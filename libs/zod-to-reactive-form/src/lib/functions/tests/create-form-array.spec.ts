@@ -1,6 +1,7 @@
 import {createFormArray} from '../create-form-array';
 import {z} from 'zod';
 import {FormArray} from '@angular/forms';
+import {createFormControl} from "@advidi/zod-to-reactive-form";
 
 describe('createFormArray', () => {
   it('should create a FormArray', () => {
@@ -16,19 +17,28 @@ describe('createFormArray', () => {
   })
 
   it('should create a FormArray with default values', () => {
-    const control = createFormArray(z.array(z.string()), {value: ['John', 'Doe']});
+    const control = createFormArray(z.array(z.string()), [
+      createFormControl(z.string(), {value: 'John'}),
+      createFormControl(z.string(), {value: 'Doe'}),
+    ]);
 
     expect(control.value).toEqual(['John', 'Doe']);
   })
 
   it('should create nested controls if values are provided', () => {
-    const control = createFormArray(z.array(z.string()), {value: ['John', 'Doe']});
+    const control = createFormArray(z.array(z.string()), [
+      createFormControl(z.string(), {value: 'John'}),
+      createFormControl(z.string(), {value: 'Doe'}),
+    ]);
 
     expect(control.controls.length).toBe(2);
   })
 
   it('should create a FormArray with disabled controls', () => {
-    const control = createFormArray(z.array(z.string()), {disabled: [true, true]});
+    const control = createFormArray(z.array(z.string()), [
+      createFormControl(z.string(), {disabled: true}),
+      createFormControl(z.string(), {disabled: true}),
+    ]);
 
     control.controls.forEach(control => {
       expect(control.disabled).toBeTruthy();
@@ -44,13 +54,19 @@ describe('createFormArray', () => {
   })
 
   it('should create a nested FormArray with default values', () => {
-    const control = createFormArray(z.array(z.array(z.string())), {value: [['John'], ['Doe']]});
+    const control = createFormArray(z.array(z.array(z.string())), [
+      createFormArray(z.array(z.string()), [createFormControl(z.string(), {value: 'John'})]),
+      createFormArray(z.array(z.string()), [createFormControl(z.string(), {value: 'Doe'})]),
+    ]);
 
     expect(control.value).toEqual([['John'], ['Doe']]);
   })
 
   it('should create a nested FormArray with disabled controls', () => {
-    const control = createFormArray(z.array(z.array(z.string())), {disabled: [[true], [true]]});
+    const control = createFormArray(z.array(z.array(z.string())), [
+      createFormArray(z.array(z.string()), [createFormControl(z.string(), {disabled: true})]),
+      createFormArray(z.array(z.string()), [createFormControl(z.string(), {disabled: true})]),
+    ]);
 
     control.controls.forEach(control => {
       control.controls.forEach(control => {
