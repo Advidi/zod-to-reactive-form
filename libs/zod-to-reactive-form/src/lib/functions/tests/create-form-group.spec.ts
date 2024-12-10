@@ -1,6 +1,7 @@
 import {createFormGroup} from '../create-form-group';
 import {z} from 'zod';
 import {FormControl, FormGroup} from '@angular/forms';
+import {createFormControl} from "../create-form-control";
 
 describe('createFormGroup', () => {
   it('should create a FormGroup', () => {
@@ -18,10 +19,8 @@ describe('createFormGroup', () => {
       name: z.string(),
       age: z.number(),
     }), {
-      value: {
-        name: 'John',
-        age: 30,
-      }
+      name: createFormControl(z.string(), {value: 'John'}),
+      age: createFormControl(z.number(), {value: 30}),
     });
 
     expect(control.controls.name.value).toEqual('John');
@@ -33,10 +32,8 @@ describe('createFormGroup', () => {
       name: z.string(),
       age: z.number(),
     }), {
-      disabled: {
-        name: true,
-        age: true,
-      }
+      name: createFormControl(z.string(), {disabled: true}),
+      age: createFormControl(z.number(), {disabled: true}),
     });
 
     expect(control.controls.name.disabled).toBeTruthy();
@@ -65,13 +62,13 @@ describe('createFormGroup', () => {
         street: z.string(),
       }),
     }), {
-      value: {
-        name: 'John',
-        address: {
-          city: 'New York',
-          street: '5th Avenue',
-        },
-      }
+      address: createFormGroup(z.object({
+        city: z.string(),
+        street: z.string(),
+      }), {
+        city: createFormControl(z.string(), {value: 'New York'}),
+        street: createFormControl(z.string(), {value: '5th Avenue'})
+      })
     });
 
     expect(control.controls.address.controls.city.value).toEqual('New York');
@@ -86,13 +83,13 @@ describe('createFormGroup', () => {
         street: z.string(),
       }),
     }), {
-      disabled: {
-        name: true,
-        address: {
-          city: true,
-          street: true,
-        },
-      }
+      address: createFormGroup(z.object({
+        city: z.string(),
+        street: z.string(),
+      }), {
+        city: createFormControl(z.string(), {disabled: true}),
+        street: createFormControl(z.string(), {disabled: true})
+      })
     });
 
     expect(control.controls.address.controls.city.disabled).toBeTruthy();
