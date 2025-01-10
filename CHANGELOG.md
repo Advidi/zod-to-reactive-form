@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/Advidi/zod-to-reactive-form/compare/v1.2.2...v1.2.3) (2025-01-10)
+
+
+### Bug Fixes
+
+* typings ([91e2834](https://github.com/Advidi/zod-to-reactive-form/commit/91e2834c028b0adbb614631ef4e8d35fc2ca63f5))
+
 ## [1.2.2](https://github.com/Advidi/zod-to-reactive-form/compare/v1.2.1...v1.2.2) (2025-01-10)
 
 
