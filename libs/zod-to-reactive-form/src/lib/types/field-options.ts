@@ -1,8 +1,8 @@
 import {AsyncValidatorFn, ValidatorFn} from "@angular/forms";
-import {GuardUndefined} from "./undefined-guard";
+import {GeneratorOptions} from "./generator-options";
 
-export interface FieldOptions<T> {
-  value?: GuardUndefined<T>;
+export interface FieldOptions<T> extends GeneratorOptions {
+  value?: T;
   disabled?: boolean;
   validators?: ValidatorFn | ValidatorFn[] | null;
   asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[] | null;

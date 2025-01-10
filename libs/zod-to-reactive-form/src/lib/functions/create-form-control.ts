@@ -1,18 +1,17 @@
-import {FieldOptions, GuardUndefined} from '../types';
+import {FieldOptions} from '../types';
 import {z} from 'zod';
-import {AbstractControlOptions, FormControl, Validators} from '@angular/forms';
-import {isZodSchemaRequired} from './is-zod-schema-required';
+import {FormControl, Validators} from '@angular/forms';
 
-export function createFormControl<TSchema extends z.ZodType>(schema: TSchema, overrides?: FieldOptions<z.infer<TSchema>> & AbstractControlOptions): FormControl<GuardUndefined<z.infer<TSchema>>> {
+export function createFormControl<TSchema extends z.ZodType>(schema: TSchema, overrides?: FieldOptions<z.infer<TSchema>>): FormControl<z.infer<TSchema>> {
   const { value = null, disabled = false } = overrides ?? {};
+  const isRequired = overrides?.isRequired ?? ((schema: z.ZodSchema) => !schema.isOptional());
 
   return new FormControl(
     {value, disabled},
     {
-      nonNullable: isZodSchemaRequired(schema),
-      validators: isZodSchemaRequired(schema) ? [Validators.required] : [],
-      asyncValidators: [],
-      ...overrides
+      nonNullable: !(schema instanceof z.ZodNullable),
+      ...overrides,
+      validators: (isRequired(schema) ? [Validators.required] : []).concat(overrides?.validators ?? []),
     }
-  ) as FormControl<GuardUndefined<z.infer<TSchema>>>;
+  ) as FormControl<z.infer<TSchema>>;
 }

@@ -1,4 +1,3 @@
-import {GuardUndefined} from './undefined-guard';
 import {z} from 'zod';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {UnwrapLazyType} from './unwrap-lazy';
@@ -10,7 +9,7 @@ export type ZodControl<T> =
       ? FormGroup<{ [K in keyof TObjectType]: ZodControl<UnwrapLazyType<TObjectType[K]>> }>
       : T extends z.ZodFirstPartySchemaTypes
         ? T extends z.ZodType<infer Output>
-          ? FormControl<GuardUndefined<Output>>
+          ? FormControl<Output>
           : never
         : never;
 

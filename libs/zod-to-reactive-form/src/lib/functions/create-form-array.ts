@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {FieldOptions, ZodControl, ZodFormArray} from '../types';
+import {FieldOptions, GeneratorOptions, ZodControl, ZodFormArray} from '../types';
 import {AbstractControl, AbstractControlOptions, FormArray} from '@angular/forms';
 import {createZodControl} from "./create-zod-control";
 
@@ -11,13 +11,14 @@ export type FormArrayOverrides<TSchema> =
 export function createFormArray<TSchema extends z.ZodArray<z.ZodTypeAny>>(
   schema: TSchema,
   overrides?: FormArrayOverrides<TSchema>,
-  options?: AbstractControlOptions
+  options?: AbstractControlOptions,
+  generatorOptions?: GeneratorOptions,
 ): ZodFormArray<TSchema> {
   const formArray = new FormArray<any>([], options);
   const element = schema.element;
 
   overrides?.forEach((override) => {
-    return formArray.push(override instanceof AbstractControl ? override : createZodControl(element));
+    return formArray.push(override instanceof AbstractControl ? override : createZodControl(element, generatorOptions));
   })
 
   return formArray as unknown as ZodFormArray<TSchema>;
